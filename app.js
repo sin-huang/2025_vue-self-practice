@@ -1,3 +1,14 @@
+// 1、先在外面定義好RoomCard
+const RoomCard = {
+  props: ["room"],
+  template: `
+    <div class="border p-3">
+      <h5>{{ room.chinName }}</h5>
+      <p>{{ room.engName }}</p>
+    </div>
+  `,
+};
+// 2、再寫createApp
 Vue.createApp({
   data() {
     return {
@@ -112,12 +123,14 @@ Vue.createApp({
   computed: {
     chunkedRooms() {
       const chunkSize = 2;
-      // 因為slice是淺拷貝 不會影響原陣列 所以初始化一個新陣列準備裝切割後的結果
       const chunks = [];
       for (let i = 0; i < this.rooms.length; i += chunkSize) {
         chunks.push(this.rooms.slice(i, i + chunkSize));
       }
       return chunks;
     },
+  },
+  components: {
+    RoomCard,
   },
 }).mount("#app");

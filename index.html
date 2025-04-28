@@ -22,16 +22,13 @@
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <div id="app" class="container text-center py-5">
-      <!-- 把chunkedRooms裡的每個小陣列chunk取出來，並給每個chunk一個index -->
-      <div class="row" v-for="(chunk, index) in chunkedRooms" :key="index">
-        <div class="col-6 mb-4" v-for="room in chunk" :key="room">
-          <div class="border p-3">
-            <h5>{{ room.chinName }}</h5>
-            <p>{{ room.engName }}</p>
-          </div>
+    <div id="app" class="container py-5 text-center">
+        <div class="row" v-for="(chunk, index) in chunkedRooms" :key="index">
+            <!-- 要記得因為每列要2行 所以一行佔6欄 這邊要寫col-6 -->
+            <div class="col-6 mb-4" v-for="room in chunk" :key="room.chinName">
+               <room-card :room="room"></room-card>
+            </div>
         </div>
-      </div>
     </div>
   </body>
 </html>
