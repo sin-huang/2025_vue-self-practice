@@ -1,12 +1,27 @@
 // 1、先在外面定義好RoomCard
 const RoomCard = {
-  props: ["room"],
+  props: ['room'],
   template: `
     <div class="border p-3">
       <h5>{{ room.chinName }}</h5>
       <p>{{ room.engName }}</p>
     </div>
   `,
+};
+
+const RoomList = {
+  props:['chunkedRooms'],
+  components:{
+    RoomCard,
+  },
+  template:`
+    <div class="container py-5 text-center">
+      <div class="row" v-for="(chunk, index) in chunkedRooms" :key="index">
+        <div class="col-6 mb-4" v-for="room in chunk" :key="room.chinName">
+            <room-card :room="room"></room-card>
+        </div>
+      </div>
+    </div>`
 };
 // 2、再寫createApp
 Vue.createApp({
@@ -132,5 +147,6 @@ Vue.createApp({
   },
   components: {
     RoomCard,
+    RoomList,
   },
 }).mount("#app");

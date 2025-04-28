@@ -22,13 +22,8 @@
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <div id="app" class="container py-5 text-center">
-        <div class="row" v-for="(chunk, index) in chunkedRooms" :key="index">
-            <!-- 要記得因為每列要2行 所以一行佔6欄 這邊要寫col-6 -->
-            <div class="col-6 mb-4" v-for="room in chunk" :key="room.chinName">
-               <room-card :room="room"></room-card>
-            </div>
-        </div>
+    <div id="app">
+      <room-list :chunked-rooms="chunkedRooms"></room-list>
     </div>
   </body>
 </html>
