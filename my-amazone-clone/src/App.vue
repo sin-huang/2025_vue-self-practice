@@ -1,5 +1,5 @@
-<script setup>
-import { ProductCard } from "./components/ProductCard.vue";
+<script>
+import ProductCard from "./components/ProductCard.vue";
 // 要匯出別人才可以引入這個App.vue元件
 export default{
     components:{ ProductCard },
@@ -93,7 +93,7 @@ export default{
   methods: {},
   computed: {
     chunkedItems(){
-        const chunkSize = 3;
+        const chunkSize = 2;
         const chunks = [];
         for(let i=0;i<this.items.length;i+=chunkSize){
             chunks.push(this.items.slice(i,i+chunkSize));
@@ -109,11 +109,14 @@ export default{
 }
 
 </script>
-
+<!-- App.vue呼叫ProductCard時，傳進來的item出錯 -->
 <template>
-
+      <div class="custom-container container mx-6 py-5">
+        <div class="row custom-row" v-for="(chunk, index) in chunkedItems" :key="index">
+            <product-card v-for="item in chunk" :key="item.name" :item="item"></product-card>
+        </div>
+      </div>
 </template>
 
 <style>
-
 </style>
