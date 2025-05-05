@@ -21,9 +21,9 @@ const HistorySchema = new mongoose.Schema({
 const History = mongoose.model("History", HistorySchema);
 
 app.post("/history", async (req, res) => {
+  // console.log(req.body)
   const record = new History(req.body);
   await record.save();
-  // ???
   res.json(record);
 });
 
@@ -35,7 +35,7 @@ app.get("/history", async (req, res) => {
 //清除歷史紀錄
 app.delete("/history", async (req, res) => {
   await History.deleteMany({});
-  res.json({ message:"所有歷史紀錄已刪除"});
+  res.json({ msg : "所有歷史紀錄已刪除" });
 });
 
 app.listen(3000, () => console.log("Server running on http://localhost:3000"));

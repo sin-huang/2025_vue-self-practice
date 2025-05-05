@@ -20,15 +20,15 @@ const peoples = ref([
   { image: "https://i.pinimg.com/736x/39/ad/7b/39ad7bc0b4849d0d4331ea0fa4bc4314.jpg",name: "Leo", gender: "男", interests: ["烹飪", "電影"] },
   { image: "https://i.pinimg.com/736x/70/68/e6/7068e6bfceaab4b17027f608615f4ff8.jpg",name: "Mona", gender: "女", interests: ["園藝", "閱讀"] },
   { image: "https://i.pinimg.com/736x/f9/ca/3e/f9ca3e271a45a6c35623f0751b27b96b.jpg",name: "Nick", gender: "男", interests: ["健身", "電玩"] },
-  { image: "https://i.pinimg.com/originals/67/46/bd/6746bd28f2c3db65dffc2f8961d5e4ca.gif",name: "Olivia", gender: "女", interests: ["音樂", "寫作"] },
-  { image: "https://i.pinimg.com/originals/3e/29/a5/3e29a579b5eb6c4ecbbdfa46bfe7d9a0.gif",name: "Paul", gender: "男", interests: ["跑步", "攝影"] },
+  { image: "https://i.pinimg.com/736x/d9/c4/1d/d9c41d9cf4773a19dc33875d7dc38934.jpg",name: "Olivia", gender: "女", interests: ["音樂", "寫作"] },
+  { image: "https://i.pinimg.com/736x/97/a9/97/97a9973f7ce1a08c162d1f7636965de6.jpg",name: "Paul", gender: "男", interests: ["跑步", "攝影"] },
   { image: "https://i.pinimg.com/736x/a1/8a/10/a18a106fbc97ff3acaf1463287a29985.jpg",name: "Queen", gender: "女", interests: ["美術", "設計"] },
   { image: "https://i.pinimg.com/736x/92/36/2e/92362e6aff54b688bc08b2ebf1997cf2.jpg",name: "Ryan", gender: "男", interests: ["閱讀", "動畫"] },
   { image: "https://i.pinimg.com/736x/8e/69/12/8e6912b4890b0123d5b369044dab46d0.jpg",name: "Sara", gender: "女", interests: ["旅行", "日記"] },
   { image: "https://i.pinimg.com/736x/b9/9d/30/b99d304511f4c02b52ab2d82387c4362.jpg",name: "Tom", gender: "男", interests: ["編程", "健身"] },
 ]);
 
-// 新增本次點擊的人物
+// 新增本次點擊的人物 newPerson是一個普通物件 只要ref()物件才能用.value取得
 const recordClick = async (newPerson) => {
   const action = `瀏覽過 ${newPerson.name}（${
     newPerson.gender
@@ -37,6 +37,7 @@ const recordClick = async (newPerson) => {
     action,
     timestamp: new Date(),
   });
+  // console.log(res.data._id);
   records.value.unshift(res.data);
 };
 
