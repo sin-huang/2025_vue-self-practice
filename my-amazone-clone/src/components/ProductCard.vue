@@ -1,18 +1,17 @@
-<script>
-export default{
-    props: ['item'],
-}
+<script setup>
+defineProps({
+  item:Object,
+})
 </script>
 
 <template>
-  <div class="col-6 mb-2 ">
+  <div class="col-6 my-2">
     <div
-      class="card mb-3 p-3 rounded-4 w-100"
-      style="height: calc(100% - 32px)"
+      class="card mb-3 rounded-4 card-style" style="height:100%"
     >
       <div class="row g-0">
         <!-- 左側圖片 -->
-        <div class="col-md-4">
+        <div class="col-5 img-style">
           <img
             :src="item.image"
             class="img-fluid rounded-start"
@@ -20,7 +19,7 @@ export default{
           />
         </div>
         <!-- 右側說明欄 -->
-        <div class="col-md-8 text-start">
+        <div class="col-7 text-start">
           <div class="card-body">
             <a class="card-title">{{ item.name }}</a>
             <p class="card-text">⭐{{ item.star }}</p>
@@ -36,7 +35,26 @@ export default{
 </template>
 
 <style>
-.card{
-  width: 600px;
+
+.card {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: row;
+}
+
+.img-style{
+  padding: 20px;
+  background: #F7F7F7;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.img-style img{
+  mix-blend-mode: multiply;
 }
 </style>
