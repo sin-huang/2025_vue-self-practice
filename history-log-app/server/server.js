@@ -32,4 +32,10 @@ app.get("/history", async (req, res) => {
   res.json(records);
 });
 
+//清除歷史紀錄
+app.delete("/history", async (req, res) => {
+  await History.deleteMany({});
+  res.json({ message:"所有歷史紀錄已刪除"});
+});
+
 app.listen(3000, () => console.log("Server running on http://localhost:3000"));
