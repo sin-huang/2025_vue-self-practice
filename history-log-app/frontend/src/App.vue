@@ -75,5 +75,5 @@ onMounted(() => {
     >
     </PersonCard>
   </div>
-  <histotry-list :records="records"></histotry-list>
+  <HistotryList :records="records"></HistotryList>
 </template>
